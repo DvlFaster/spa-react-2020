@@ -9,7 +9,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Users from './pages/Users';
 import Navbar from './components/Navbar';
-import FunctionalComponent from './components/FunctionalComponent';
+// import FunctionalComponent from './components/FunctionalComponent';
 
 const Layout = props => {
   return(
