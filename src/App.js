@@ -1,18 +1,22 @@
 import React from 'react';
+import reducers from "./redux/index";
+import { Provider } from "react-redux";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
+import { createStore } from "redux";
 
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Users from './pages/Users';
 import Navbar from './components/Navbar';
-// import FunctionalComponent from './components/FunctionalComponent';
+
+const store = createStore(reducers);
 
 const Layout = props => {
-  return(
+  return (
     <>
       <Navbar></Navbar>
       <div className="container pt-5">
@@ -22,27 +26,32 @@ const Layout = props => {
   )
 }
 
+
 function App() {
   return (
-    <Router>
+    <Provider store={store}>
+      <Router>
+        {/* <FunctionalComponent count={1} step={1} />
+        <FunctionalComponent count={2} step={3} /> */}
         <Switch>
           <Route path="/" exact>
             <Layout>
-              <Home />
+              <Home/>
             </Layout>
           </Route>
           <Route path="/profile">
             <Layout>
-              <Profile />
+              <Profile/>
             </Layout>
           </Route>
           <Route path="/users">
             <Layout>
-              <Users />
+              <Users/>
             </Layout>
           </Route>
         </Switch>
-    </Router>
+      </Router>
+    </Provider>
   );
 }
 
